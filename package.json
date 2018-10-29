@@ -7,13 +7,16 @@
   },
   "dependencies": {
     "bulma": "^0.7.2",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-icons": "^3.2.2",
     "react-redux": "^5.1.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "styled-components": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

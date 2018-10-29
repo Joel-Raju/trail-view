@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import { TrailView } from './components';
+
+const store = configureStore();
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        hello world
-      </div>
+      <Provider store={store}>
+        <TrailView />
+      </Provider>
     );
   }
 }
