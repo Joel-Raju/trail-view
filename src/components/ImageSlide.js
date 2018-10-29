@@ -5,18 +5,11 @@ import SlideContent from './SlideContent';
 import EndSlideContent from './EndSlideContent';
 import StartSlideContent from './StartSlideContent';
 
-
-// const ImageWrapper = styled.div`
-//   position: relative;
-//   height: 576px;
-//   width: 60%;
-//   margin: 0 auto;
-// `;
-
 const ImageWrapper = styled.div`
-  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
 `;
-
 
 const ImageContainer = styled.div`
   height: 100%;
@@ -33,7 +26,7 @@ const ImageSlide = (props) => {
   const { post, info, isFirst, isLast, author } = props;
 
   return (
-    <ImageWrapper>
+    <ImageWrapper className="slide">
       <ImageContainer imageUrl={post.imageUrl}>
         { isFirst && <StartSlideContent content={info} author={author} /> }
         { isLast && !isLast && <EndSlideContent/> }

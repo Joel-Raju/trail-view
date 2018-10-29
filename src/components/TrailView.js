@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,7 +10,7 @@ import Slider from './Slider';
 const Container = styled.article`
   display: flex;
   flex-direction: row;
-  background: #a2a2a2;
+  background: #000000;
   flex-wrap: wrap;
   color: #fff;
 `;
@@ -27,7 +27,7 @@ const RelatedContent = styled.div`
   flex-grow: 0;
 `;
 
-class TrailView extends PureComponent {
+class TrailView extends Component {
 
   componentDidMount() {
     this.props.getTrail();

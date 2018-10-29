@@ -62,7 +62,6 @@ const StatsSeparator = styled.span`
 
 const StartSlideContent = (props) => {
   const { content, author } = props;
-  console.log(props);
   return (
     <StyledContent>
       <StyledHeader>{content.name}</StyledHeader>

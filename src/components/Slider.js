@@ -21,7 +21,7 @@ const OuterWrapper = styled.div`
   position: relative;
   overflow: hidden;
   height: 576px;
-  width: 300px;
+  width: 340px;
   margin: 0 auto;
 `;
 
@@ -31,6 +31,9 @@ const InnerWrapper = styled.div`
   width: 100%;
   transform: translateX(${props => props.translateValue}px);
   transition: transform ease-out 0.45s;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: no-wrap;
 `;
 
 
@@ -44,14 +47,13 @@ class Slider extends Component {
   }
 
   getSlideWidth() {
-    return document.querySelector('slide').clientWidth;
+    return document.querySelector('.slide').clientWidth;
   }
 
   goToNextSlide() {
-    console.log('asda');
     let { activeSlideIndex } = this.state;
     let { posts } = this.props
-    if (!posts || !posts.length || activeSlideIndex  == (posts.length-1)) {
+    if (!posts || !posts.length || activeSlideIndex  === (posts.length-1)) {
       return;
     }
     this.setState(prevState => ({
@@ -61,7 +63,6 @@ class Slider extends Component {
   }
 
   goToPreviousSlide() {
-    console.log('asda2');
     let { activeSlideIndex } = this.state;
     let { posts } = this.props;
     if (!posts || !posts.length || !activeSlideIndex) {
@@ -73,7 +74,12 @@ class Slider extends Component {
     })); 
   }
 
-  getPaginationText = (props) => {
+  getPaginationText() {
+    const { activeSlideIndex } = this.state;
+    const postCount = this.props.posts.length;
+    if (activeSlideIndex + 1 < postCount) {
+      return (activeSlideIndex+1) + '/' + postCount;
+    }
     return 'That\'s it';
   };
 
@@ -89,7 +95,7 @@ class Slider extends Component {
     const { posts, author, info } = props;
     const { translateValue } = this.state;
 
-    console.log(this);
+    console.log(this.state);
 
     return(
       <SliderContainer>
@@ -97,20 +103,21 @@ class Slider extends Component {
           {this.getPaginationText()}
         </PaginationContainer>
           <SliderBtn type={LEFT_BTN} onClick={this.goToPreviousSlide} />
-          <OuterWrapper translateValue={translateValue}>
-            {
-              posts.map((post,index) => (
-                <ImageSlide
-                  className="slide"
-                  key={post.id}
-                  post={post}
-                  info={info}
-                  author={author}
-                  isFirst={index === 0}
-                  isLast={index === (posts.length - 1)}
-                />
-              ))
-            }
+          <OuterWrapper>
+            <InnerWrapper translateValue={translateValue}>
+              {
+                posts.map((post,index) => (
+                  <ImageSlide
+                    key={post.id}
+                    post={post}
+                    info={info}
+                    author={author}
+                    isFirst={index === 0}
+                    isLast={index === (posts.length - 1)}
+                  />
+                ))
+              }
+            </InnerWrapper>
           </OuterWrapper>
           <SliderBtn type={RIGHT_BTN} onClick={this.goToNextSlide} />
       </SliderContainer>
@@ -131,9 +138,9 @@ const Button = styled.button`
 `;
 
 const SliderBtn = (props) => {
-  const { type } = props;
+  const { type, onClick } = props;
   return (
-    <Button>
+    <Button onClick={onClick}>
       { type === LEFT_BTN ? <FiChevronLeft /> : <FiChevronRight /> }
     </Button>
   );
