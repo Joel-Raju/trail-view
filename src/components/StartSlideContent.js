@@ -68,6 +68,8 @@ const StartSlideContent = (props) => {
       <StatsContainer>
         {content.counts.posts} Posts
         <StatsSeparator />
+        {content.counts.tryouts} Tryouts
+        <StatsSeparator />
         {content.counts.views} Views
       </StatsContainer>
       <AuthorContainer>

@@ -11,6 +11,8 @@ const getActiveTrailForRender = createSelector(activeTrail, (trail) => {
   let { data } = trail;
   let info = (({ name, counts }) => ({ name, counts }))(data.info);
   let author = (({ name, image}) => ({ name, image }))(data.author);
+
+  info.counts.tryouts = data.posts.reduce((sum, post) => sum + post.counts.tryouts, 0);
   
   let posts = _.map(data.posts, (post) => ({
     id: post.id,

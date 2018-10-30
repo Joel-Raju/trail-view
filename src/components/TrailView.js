@@ -13,6 +13,8 @@ const Container = styled.article`
   background: #000000;
   flex-wrap: wrap;
   color: #fff;
+  height: 100vh;
+  align-items: stretch;
 `;
 
 const MainContent = styled.div`
@@ -20,11 +22,13 @@ const MainContent = styled.div`
   flex-basis: 720px;
   flex-grow: 1;
   flex-shrink: 0;
+  height: 100%;
 `;
 
 const RelatedContent = styled.div`
   flex-basis: 32.33%;
   flex-grow: 0;
+  border-left: 1.5px solid rgba(255, 255, 255, 0.5);
 `;
 
 class TrailView extends Component {
@@ -43,7 +47,7 @@ class TrailView extends Component {
           />
         </MainContent>
         <RelatedContent>
-          hello world
+          
         </RelatedContent>
       </Container>
     );
